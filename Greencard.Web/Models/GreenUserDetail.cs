@@ -42,5 +42,7 @@ namespace Greencard.Web.Models
         public Nullable<int> NumberofChildren { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public Nullable<int> Status { get; set; }
+    
+        public virtual GreenUser GreenUser { get; set; }
     }
 }

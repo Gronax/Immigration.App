@@ -14,6 +14,12 @@ namespace Greencard.Web.Models
     
     public partial class GreenUser
     {
+        public GreenUser()
+        {
+            this.GreenOrders = new HashSet<GreenOrder>();
+            this.GreenUserDetails = new HashSet<GreenUserDetail>();
+        }
+    
         public int ID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -24,5 +30,8 @@ namespace Greencard.Web.Models
         public Nullable<int> EndYear { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public Nullable<int> Status { get; set; }
+    
+        public virtual ICollection<GreenOrder> GreenOrders { get; set; }
+        public virtual ICollection<GreenUserDetail> GreenUserDetails { get; set; }
     }
 }

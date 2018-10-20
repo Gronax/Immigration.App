@@ -28,12 +28,19 @@ namespace Greencard.Web.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<Book> Books { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<GreenCategory> GreenCategories { get; set; }
         public DbSet<GreenCountry> GreenCountries { get; set; }
         public DbSet<GreenEducation> GreenEducations { get; set; }
         public DbSet<GreenMaritalStatu> GreenMaritalStatus { get; set; }
+        public DbSet<GreenOrder> GreenOrders { get; set; }
+        public DbSet<GreenOrderDetail> GreenOrderDetails { get; set; }
+        public DbSet<GreenProduct> GreenProducts { get; set; }
         public DbSet<GreenUser> GreenUsers { get; set; }
         public DbSet<GreenUserDetail> GreenUserDetails { get; set; }
+        public DbSet<Holiday> Holidays { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<ProductDetail> ProductDetails { get; set; }
