@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="325e08d11d0b457585bb85ece09c4af3" Name="Diagram1">
+        <EntityTypeShape EntityType="u7666632_SahibidenCloneModel.Category" Width="1.5" PointX="3" PointY="2.375" />
+        <EntityTypeShape EntityType="u7666632_SahibidenCloneModel.GreenCountry" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="u7666632_SahibidenCloneModel.GreenEducation" Width="1.5" PointX="2.75" PointY="6.75" />
+        <EntityTypeShape EntityType="u7666632_SahibidenCloneModel.GreenMaritalStatu" Width="1.5" PointX="4.75" PointY="6.75" />
+        <EntityTypeShape EntityType="u7666632_SahibidenCloneModel.GreenUser" Width="1.5" PointX="6.75" PointY="6.75" />
+        <EntityTypeShape EntityType="u7666632_SahibidenCloneModel.GreenUserDetail" Width="1.5" PointX="8.75" PointY="6.75" />
+        <EntityTypeShape EntityType="u7666632_SahibidenCloneModel.Product" Width="1.5" PointX="9.75" PointY="2.125" />
+        <EntityTypeShape EntityType="u7666632_SahibidenCloneModel.ProductCategory" Width="1.5" PointX="7.5" PointY="2.375" />
+        <EntityTypeShape EntityType="u7666632_SahibidenCloneModel.ProductDetail" Width="1.5" PointX="12" PointY="4.25" />
+        <EntityTypeShape EntityType="u7666632_SahibidenCloneModel.ProductImage" Width="1.5" PointX="12" PointY="1.125" />
+        <EntityTypeShape EntityType="u7666632_SahibidenCloneModel.SubCategory" Width="1.5" PointX="5.25" PointY="2.375" />
+        <EntityTypeShape EntityType="u7666632_SahibidenCloneModel.sysdiagram" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="u7666632_SahibidenCloneModel.TopCategory" Width="1.5" PointX="0.75" PointY="2.625" />
+        <AssociationConnector Association="u7666632_SahibidenCloneModel.FK_Category_TopCategory" />
+        <AssociationConnector Association="u7666632_SahibidenCloneModel.FK_SubCategory_Category" />
+        <AssociationConnector Association="u7666632_SahibidenCloneModel.FK_Product_ProductCategory" />
+        <AssociationConnector Association="u7666632_SahibidenCloneModel.FK_ProductDetail_Product" />
+        <AssociationConnector Association="u7666632_SahibidenCloneModel.FK_ProductImage_Product" />
+        <AssociationConnector Association="u7666632_SahibidenCloneModel.FK_ProductCategory_SubCategory" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

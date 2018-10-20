@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="u7666632_SahibidenCloneModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="u7666632_SahibidenCloneEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(u7666632_SahibidenCloneModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(u7666632_SahibidenCloneModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="Categories" EntityType="u7666632_SahibidenCloneModel.Category" />
+    <EntitySet Name="GreenCountries" EntityType="u7666632_SahibidenCloneModel.GreenCountry" />
+    <EntitySet Name="GreenEducations" EntityType="u7666632_SahibidenCloneModel.GreenEducation" />
+    <EntitySet Name="GreenMaritalStatus" EntityType="u7666632_SahibidenCloneModel.GreenMaritalStatu" />
+    <EntitySet Name="GreenUsers" EntityType="u7666632_SahibidenCloneModel.GreenUser" />
+    <EntitySet Name="GreenUserDetails" EntityType="u7666632_SahibidenCloneModel.GreenUserDetail" />
+    <EntitySet Name="Products" EntityType="u7666632_SahibidenCloneModel.Product" />
+    <EntitySet Name="ProductCategories" EntityType="u7666632_SahibidenCloneModel.ProductCategory" />
+    <EntitySet Name="ProductDetails" EntityType="u7666632_SahibidenCloneModel.ProductDetail" />
+    <EntitySet Name="ProductImages" EntityType="u7666632_SahibidenCloneModel.ProductImage" />
+    <EntitySet Name="SubCategories" EntityType="u7666632_SahibidenCloneModel.SubCategory" />
+    <EntitySet Name="sysdiagrams" EntityType="u7666632_SahibidenCloneModel.sysdiagram" />
+    <EntitySet Name="TopCategories" EntityType="u7666632_SahibidenCloneModel.TopCategory" />
+    <AssociationSet Name="FK_Category_TopCategory" Association="u7666632_SahibidenCloneModel.FK_Category_TopCategory">
+      <End Role="TopCategory" EntitySet="TopCategories" />
+      <End Role="Category" EntitySet="Categories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SubCategory_Category" Association="u7666632_SahibidenCloneModel.FK_SubCategory_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="SubCategory" EntitySet="SubCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_ProductCategory" Association="u7666632_SahibidenCloneModel.FK_Product_ProductCategory">
+      <End Role="ProductCategory" EntitySet="ProductCategories" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductDetail_Product" Association="u7666632_SahibidenCloneModel.FK_ProductDetail_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProductDetail" EntitySet="ProductDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductImage_Product" Association="u7666632_SahibidenCloneModel.FK_ProductImage_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProductImage" EntitySet="ProductImages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductCategory_SubCategory" Association="u7666632_SahibidenCloneModel.FK_ProductCategory_SubCategory">
+      <End Role="SubCategory" EntitySet="SubCategories" />
+      <End Role="ProductCategory" EntitySet="ProductCategories" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TopCategoryID" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Count" Type="Int32" />
+    <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="Slug" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TopCategory" Relationship="u7666632_SahibidenCloneModel.FK_Category_TopCategory" FromRole="Category" ToRole="TopCategory" />
+    <NavigationProperty Name="SubCategories" Relationship="u7666632_SahibidenCloneModel.FK_SubCategory_Category" FromRole="Category" ToRole="SubCategory" />
+  </EntityType>
+  <EntityType Name="GreenCountry">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="GreenEducation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="GreenMaritalStatu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="GreenUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="MiddleName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="BeginYear" Type="Int32" Nullable="false" />
+    <Property Name="EndYear" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Status" Type="Int32" />
+  </EntityType>
+  <EntityType Name="GreenUserDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GreenUserID" Type="Int32" />
+    <Property Name="FirstName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="MiddleName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="Boolean" />
+    <Property Name="Day" Type="Int32" />
+    <Property Name="Month" Type="Int32" />
+    <Property Name="Year" Type="Int32" />
+    <Property Name="BirthCity" Type="Int32" />
+    <Property Name="CountryBorn" Type="Int32" />
+    <Property Name="CountryEligibility" Type="Int32" />
+    <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="InCareOf" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="AddressLine1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="AddressLine2" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="AdressCityTown" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="AdressDistrictCountyProvinceState" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="AdressPostalCode" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="AdressCountry" Type="Int32" />
+    <Property Name="CountryLiveToday" Type="Int32" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Education" Type="Int32" />
+    <Property Name="MaritalStatus" Type="Int32" />
+    <Property Name="NumberofChildren" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Status" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductCategoryID" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Single" />
+    <Property Name="Location" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="MainImage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="Slug" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ProductCategory" Relationship="u7666632_SahibidenCloneModel.FK_Product_ProductCategory" FromRole="Product" ToRole="ProductCategory" />
+    <NavigationProperty Name="ProductDetails" Relationship="u7666632_SahibidenCloneModel.FK_ProductDetail_Product" FromRole="Product" ToRole="ProductDetail" />
+    <NavigationProperty Name="ProductImages" Relationship="u7666632_SahibidenCloneModel.FK_ProductImage_Product" FromRole="Product" ToRole="ProductImage" />
+  </EntityType>
+  <EntityType Name="ProductCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SubCategoryID" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Count" Type="Int32" />
+    <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="Slug" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Products" Relationship="u7666632_SahibidenCloneModel.FK_Product_ProductCategory" FromRole="ProductCategory" ToRole="Product" />
+    <NavigationProperty Name="SubCategory" Relationship="u7666632_SahibidenCloneModel.FK_ProductCategory_SubCategory" FromRole="ProductCategory" ToRole="SubCategory" />
+  </EntityType>
+  <EntityType Name="ProductDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="Key" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Value" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="Slug" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Product" Relationship="u7666632_SahibidenCloneModel.FK_ProductDetail_Product" FromRole="ProductDetail" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="ProductImage">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="Slug" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Product" Relationship="u7666632_SahibidenCloneModel.FK_ProductImage_Product" FromRole="ProductImage" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="SubCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Count" Type="Int32" />
+    <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="Slug" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Category" Relationship="u7666632_SahibidenCloneModel.FK_SubCategory_Category" FromRole="SubCategory" ToRole="Category" />
+    <NavigationProperty Name="ProductCategories" Relationship="u7666632_SahibidenCloneModel.FK_ProductCategory_SubCategory" FromRole="SubCategory" ToRole="ProductCategory" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TopCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Count" Type="Int32" />
+    <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="Slug" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Categories" Relationship="u7666632_SahibidenCloneModel.FK_Category_TopCategory" FromRole="TopCategory" ToRole="Category" />
+  </EntityType>
+  <Association Name="FK_Category_TopCategory">
+    <End Type="u7666632_SahibidenCloneModel.TopCategory" Role="TopCategory" Multiplicity="1" />
+    <End Type="u7666632_SahibidenCloneModel.Category" Role="Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TopCategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Category">
+        <PropertyRef Name="TopCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SubCategory_Category">
+    <End Type="u7666632_SahibidenCloneModel.Category" Role="Category" Multiplicity="1" />
+    <End Type="u7666632_SahibidenCloneModel.SubCategory" Role="SubCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SubCategory">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_ProductCategory">
+    <End Type="u7666632_SahibidenCloneModel.ProductCategory" Role="ProductCategory" Multiplicity="1" />
+    <End Type="u7666632_SahibidenCloneModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductCategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductDetail_Product">
+    <End Type="u7666632_SahibidenCloneModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="u7666632_SahibidenCloneModel.ProductDetail" Role="ProductDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProductDetail">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductImage_Product">
+    <End Type="u7666632_SahibidenCloneModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="u7666632_SahibidenCloneModel.ProductImage" Role="ProductImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProductImage">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductCategory_SubCategory">
+    <End Type="u7666632_SahibidenCloneModel.SubCategory" Role="SubCategory" Multiplicity="1" />
+    <End Type="u7666632_SahibidenCloneModel.ProductCategory" Role="ProductCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubCategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProductCategory">
+        <PropertyRef Name="SubCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

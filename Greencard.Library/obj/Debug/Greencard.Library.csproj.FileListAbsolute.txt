@@ -1,0 +1,10 @@
+D:\Projects\Greencard.App\Greencard.Library\bin\Debug\Greencard.Library.dll
+D:\Projects\Greencard.App\Greencard.Library\bin\Debug\Greencard.Library.pdb
+D:\Projects\Greencard.App\Greencard.Library\obj\Debug\Greencard.Library.csproj.CoreCompileInputs.cache
+D:\Projects\Greencard.App\Greencard.Library\obj\Debug\Greencard.Library.dll
+D:\Projects\Greencard.App\Greencard.Library\obj\Debug\Greencard.Library.pdb
+C:\Users\meavci\Desktop\Greencard.App\Greencard.Library\bin\Debug\Greencard.Library.dll
+C:\Users\meavci\Desktop\Greencard.App\Greencard.Library\bin\Debug\Greencard.Library.pdb
+C:\Users\meavci\Desktop\Greencard.App\Greencard.Library\obj\Debug\Greencard.Library.csproj.CoreCompileInputs.cache
+C:\Users\meavci\Desktop\Greencard.App\Greencard.Library\obj\Debug\Greencard.Library.dll
+C:\Users\meavci\Desktop\Greencard.App\Greencard.Library\obj\Debug\Greencard.Library.pdb

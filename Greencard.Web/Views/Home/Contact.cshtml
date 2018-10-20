@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Bize Ulaşın";
+}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <p class="display-4">@ViewBag.Title</p>
+            <hr />
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <div class="embed-responsive embed-responsive-1by1">
+                <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48192.25802971525!2d29.028033658263432!3d40.98112770158665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac790b17ba89d%3A0xd2d24ea0437a7ee2!2zS2FkxLFrw7Z5L8Swc3RhbmJ1bA!5e0!3m2!1str!2str!4v1539377935164" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="card">
+                <div class="card-body">
+                    <p class="lead">Adres Bilgisi</p>
+                    <p><strong>Danışma Hattı:</strong> 0 (212) 539 39 95 (Hafta içi / 10:30 - 17:30)</p>
+                    <p><strong>E-Posta:</strong> <a href="mailto:@System.Web.Configuration.WebConfigurationManager.AppSettings["InfoMail"]">@System.Web.Configuration.WebConfigurationManager.AppSettings["InfoMail"]</a></p>
+                    <p><strong>Adres:</strong> Halkalı Atakent Mah. 241 Sk. No: 7 Terrace Tema B-18 34307 Küçükçekmece / İstanbul</p>
+                </div>
+            </div>
+            <br />
+            <form>
+                <div class="form-group">
+                    <p class="lead">İletişim Formu</p>
+                </div>
+                <div class="form-group">
+                    <label for="txtNameSurname">Ad - Soyad</label>
+                    <input type="text" class="form-control" id="txtNameSurname" placeholder="Adınızı soyadınızı giriniz">
+                </div>
+                <div class="form-group">
+                    <label for="txtEmail">E-Posta Adresi</label>
+                    <input type="email" class="form-control" id="txtEmail" placeholder="E-Posta adresinizi giriniz">
+                </div>
+                <div class="form-group">
+                    <label for="txtMessage">Mesaj</label>
+                    <textarea class="form-control" id="txtMessage" rows="3" placeholder="Mesajınızı giriniz" autocomplete="off"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Mesajı Gönder</button>
+            </form>
+        </div>
+    </div>
+</div>

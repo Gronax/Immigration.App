@@ -1,0 +1,631 @@
+﻿@{
+    ViewBag.Title = "Başvuru Formu";
+    var countries = ViewBag.Country as IList<Greencard.Web.Models.GreenCountry>;
+    var educations = ViewBag.Education as IList<Greencard.Web.Models.GreenEducation>;
+    var maritalStatu = ViewBag.MaritalStatu as IList<Greencard.Web.Models.GreenMaritalStatu>;
+}
+}
+<form action="/basvuru-formu" method="post">
+    <input type="hidden" name="GreenUserId" value="1" />
+    <div class="container">
+        <h3 class="m9090 text-center">Part One - Entrant Information</h3>
+        <div class="card mb-3">
+            <div class="card-header">1. Ad Soyad</div>
+            <div class="card-body">
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="FirstName">Ad</label>
+                        <input type="text" class="form-control" id="FirstName" name="FirstName" placeholder="Adınız">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                            <label class="custom-control-label" for="customCheck1">Adım yok</label>
+                        </div>
+                    </div>
+                    <div class="form-group col">
+                        <label for="MiddleName">
+                            Orta Ad <span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title='İkinci bir adınız varsa "İkinci bir adım var"ı işeretleyin'>?</span>
+                        </label>
+                        <input type="text" class="form-control" id="MiddleName" name="MiddleName" placeholder="Orta Adınız" disabled="disabled">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck2">
+                            <label class="custom-control-label" for="customCheck2">İkinci bir adım var</label>
+                        </div>
+                    </div>
+                    <div class="form-group col">
+                        <label for="LastName">Soyad</label>
+                        <input type="text" class="form-control" id="LastName" name="LastName" placeholder="Soyadınız">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.card -->
+        <div class="card mb-3">
+            <div class="card-header">2. Cinsiyet</div>
+            <div class="card-body">
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="Gender1" name="Gender" class="custom-control-input">
+                    <label class="custom-control-label" for="Gender1">Erkek</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="Gender2" name="Gender" class="custom-control-input">
+                    <label class="custom-control-label" for="Gender2">Kadın</label>
+                </div>
+            </div>
+        </div>
+        <!-- /.card -->
+        <div class="card mb-3">
+            <div class="card-header">3. Doğum Tarihi</div>
+            <div class="card-body">
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="Day">Gün</label>
+                        <input type="number" class="form-control" id="Day" name="Day" min="1" max="31" placeholder="Doğum Gününüz">
+                    </div>
+                    <div class="form-group col">
+                        <label for="Month">Ay</label>
+                        <input type="number" class="form-control" id="Month" name="Month" min="1" max="12" placeholder="Doğum Ayınız">
+                    </div>
+                    <div class="form-group col">
+                        <label for="Year">Yıl</label>
+                        <input type="number" class="form-control" id="Year" name="Year" min="1" placeholder="Doğum Yılınız">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.card -->
+        <div class="card mb-3">
+            <div class="card-header">
+                4. City Where You Were Born
+            </div>
+            <div class="card-body">
+                <div class="col-xs-12 col-sm-12">
+                    <span id="HelpBirthCity" class="help-block">
+                        Enter Birth City Only. Do not enter District/County/Province/State.
+                    </span>
+                </div>
+                <div class="col-xs-12 col-sm-8">
+                    <div class="form-group">
+                        <div>Birth City</div>
+                        <input id="BirthCity" name="BirthCity" maxlength="33" class="form-control" type="text">
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12">
+                    <div class="form-group">
+                        <div class="combo checkbox mt0 ml5">
+                            <label>
+                                <input id="cbxBirthCity" type="checkbox" name="cbxBirthCity">
+                                <small class="mt2"> Birth City Unknown</small>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12">
+
+                </div>
+
+
+                <div class="col-xs-12 col-sm-12">
+
+                </div>
+
+            </div>
+        </div>
+        <!-- /.card -->
+        <div class="card mb-3">
+            <div class="card-header">
+                5. Country Where You Were Born
+            </div>
+            <div class="card-body">
+
+                <div class="col-xs-12 col-sm-8">
+                    <select name="CountryBorn" id="CountryBorn" class="form-control">
+                        <option selected="selected" value="0">Select A Country...</option>
+                        @if (countries != null)
+                        {
+                            foreach (var item in countries.OrderBy(q => q.Name).ToList())
+                            {
+                                <option value="@item.ID">@item.Name</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="col-xs-12 col-sm-12">
+
+                </div>
+
+
+                <div class="col-xs-12 col-sm-12">
+
+                </div>
+
+            </div>
+        </div>
+        <!-- /.card -->
+        <div class="card mb-3">
+            <div class="card-header">
+                6. Country of Eligibility for the DV Program
+            </div>
+            <div class="card-body">
+
+                <div class="col-xs-12 col-sm-12">
+                    <p>
+                        Your country of eligibility will normally be the same as your country of birth.
+                        Your country of eligibility is <b>NOT</b> related to where you live.
+                        If you were born in a country that is not eligible for the DV program, please go to
+                        <a id="ContentPlaceHolder1_formApplicant_qEligibilityCountry_hlEligibleCountry" href="https://travel.state.gov/content/dam/visas/Diversity-Visa/DV-Instructions-Translations/DV-2020-Instructions-Translations/DV-2020-Instructions-English.pdf" target="_blank">
+                            <b>Explanation of Country of Eligibility</b>
+                        </a> to see if there is another option available in your case.
+                    </p>
+                    <span id="HelpElibibleCountryRadio" class="help-block" aria-describedby="">
+                        Are you claiming eligibility based on the country where you were born?
+                    </span>
+                </div>
+                <div class="col-xs-12 col-sm-12 radlist">
+                    <table id="ContentPlaceHolder1_formApplicant_qEligibilityCountry_rblBirthEligibleCountry" class="gnome">
+                        <tbody>
+                            <tr>
+                                <td><input id="rblBirthEligibleCountry_0" type="radio" name="rblBirthEligibleCountry_0" value="Y" checked="checked"><label for="rblBirthEligibleCountry_0">Yes</label></td>
+                                <td><input id="rblBirthEligibleCountry_1" type="radio" name="rblBirthEligibleCountry_1" value="N"><label for="rblBirthEligibleCountry_1">No</label></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-xs-12 col-sm-12">
+                    <span id="HelpElibibleCountryDropDown" class="help-block" aria-describedby="">
+                        If not, you must enter the country from which you are claiming eligibility.
+                    </span>
+                </div>
+                <div class="col-xs-12 col-sm-8">
+                    <select d="CountryEligibility" name="CountryEligibility" iclass="form-control" disabled="">
+                        <option value="0">Select A Country...</option>
+                    </select>
+                </div>
+                <input type="hidden" name="hidBirthEligibleCountry" id="hidBirthEligibleCountry" value="0">
+                <div class="col-xs-12 col-sm-12">
+
+                </div>
+
+
+                <div class="col-xs-12 col-sm-12">
+
+                </div>
+
+            </div>
+        </div>
+        <!-- /.card -->
+        <div class="card mb-3">
+            <div class="card-header">
+                7.
+                Entrant
+                Photograph
+            </div>
+            <div class="card-body">
+                <div class="col-xs-12 col-sm-12">
+                    <p>
+                        Photographs must be submitted at the time of&nbsp;eDV&nbsp;entry. Photographs that do not comply with all specifications,
+                        including but not limited to recency of the photos, composition of the photos, and	unacceptable backgrounds are
+                        grounds for disqualification of the entire entry. Any manipulation of photographs that alters the facial
+                        characteristics is grounds for disqualification of the entire entry. See	examples on the
+                        <a id="ContentPlaceHolder1_formApplicant_qPhotograph_hlDvPhotoLink" href="https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/photos/photo-examples.html" target="_blank">Photo Examples</a>
+                        page.
+                    </p>
+                    <p>
+                        Please refer to the Instructions for the
+                        2020
+                        Diversity Immigrant	Visa program (DV-2020) for
+                        technical specifications and compositional specifications for the digital image.
+                    </p>
+                    <p>
+                        You will use one of the following methods to enter the image into eDV:
+                    </p>
+                    <ul>
+                        <li>Take a new digital image.</li>
+                        <li>Use a digital scanner to scan a submitted photograph.</li>
+                    </ul>
+                    <p>
+
+
+                        <b>
+                            <a id="ContentPlaceHolder1_formApplicant_qPhotograph_hlDvPhotoLink1" href="https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/photos/photo-examples.html" target="_blank">Link to Photo Instructions/Photo Examples page</a>
+                        </b>
+                    </p>
+                    <p>
+                        <em>
+                            Clicking the 'Choose New Photo' button will allow you to look for and
+                            choose the file which is storing the photograph. Once chosen, the file name and the
+                            photo will display. If the photo is not correct, please click on the 'Choose New Photo'
+                            button to choose a new file.
+                        </em>
+                    </p>
+                    <div style="display: none;">
+                        <input type="file" name="inpPhotograph" id="inpPhotograph" title="Select Photo" style="width:390px;">
+                    </div>
+                    <p>
+                        <input name="_ctl0:txtPhotoBox" type="text" id="txtPhotoBox" style="width: 200px;" onclick="" readonly=""><input name="btnPhotoBox" type="button" id="btnPhotoBox" value="Choose New Photo">
+                    </p>
+                </div>
+                <label class="errortext" for="ContentPlaceHolder1_formApplicant_qPhotograph_txtPhotoBox" style="display:none"></label>
+                <div class="col-xs-6 col-sm-6 col-sm-push-0">
+                    <div id="ContentPlaceHolder1_formApplicant_qPhotograph_inpPhotograph_preview_div" style="display:none;">
+                        <p>
+                            &nbsp;&nbsp;&nbsp;<img id="ContentPlaceHolder1_formApplicant_qPhotograph_inpPhotograph_preview" src="" alt="" class="previewimg">
+
+                        </p>
+                    </div><input type="hidden" name="_ctl0:ContentPlaceHolder1:formApplicant:qPhotograph:hidPreviewSRC" id="ContentPlaceHolder1_formApplicant_qPhotograph_hidPreviewSRC">
+                </div>
+
+                <div class="col-xs-12 col-sm-12">
+                    <p class="successtext">
+
+                    </p>
+
+                </div>
+
+
+            </div>
+        </div>
+        <!-- /.card -->
+        <div class="card mb-3">
+            <div class="card-header">
+                8. Mailing Address
+            </div>
+            <div class="card-body">
+                <!-- In Care Of -->
+                <div class="col-xs-12 col-sm-12 m5050">
+                    a. In Care Of (optional)
+                </div>
+
+                <div class="col-xs-12 col-sm-8">
+                    <label class="sr-only">In Care Of</label>
+                    <input id="InCareOf" name="InCareOf" maxlength="30" class="form-control" type="text">
+                </div>
+                <div class="col-xs-12 col-sm-12">
+                    <label class="errortext" for="InCareOf" style="display:none"></label>
+                </div>
+
+                <div class="col-xs-12 col-sm-12">
+
+                </div>
+                <!-- Address Line 1 -->
+                <div class="col-xs-12 col-sm-12 m5050">
+                    b. Address Line 1
+                </div>
+
+                <div class="col-xs-12 col-sm-8">
+                    <label class="sr-only">Address Line 1</label>
+                    <input id="AddressLine1" name="AddressLine1" maxlength="30" class="form-control" type="text">
+                </div>
+                <div class="col-xs-12 col-sm-12">
+
+                    <label class="errortext" for="AddressLine1" style="display:none"></label>
+                </div>
+
+                <div class="col-xs-12 col-sm-12">
+
+                </div>
+                <!-- Address Line 2 -->
+                <div class="col-xs-12 col-sm-12 m5050">
+                    c. Address Line 2 (optional)
+                </div>
+
+                <div class="col-xs-12 col-sm-8">
+                    <label class="sr-only">Address Line 2</label>
+                    <input id="AddressLine2" name="AddressLine2" type="text" maxlength="30" class="form-control">
+                </div>
+                <div class="col-xs-12 col-sm-12">
+
+                    <label class="errortext" for="AddressLine2" style="display:none"></label>
+                </div>
+
+                <div class="col-xs-12 col-sm-12">
+
+                </div>
+                <!-- City/Town -->
+                <div class="col-xs-12 col-sm-12 m5050">
+                    d. City/Town
+                </div>
+
+                <div class="col-xs-12 col-sm-8">
+                    <label class="sr-only">City/Town</label>
+                    <input id="AdressCityTown" name="AdressCityTown" type="text" maxlength="50" class="form-control">
+                </div>
+                <div class="col-xs-12 col-sm-12">
+
+                    <label class="errortext" for="AdressCityTown" style="display:none"></label>
+                </div>
+
+                <div class="col-xs-12 col-sm-12">
+
+                </div>
+                <!-- District/County/Province/State -->
+                <div class="col-xs-12 col-sm-12 m5050">
+                    e. District/County/Province/State
+                </div>
+
+                <div class="col-xs-12 col-sm-8">
+                    <label class="sr-only">District/County/Province/State</label>
+                    <input id="AdressDistrictCountyProvinceState" name="AdressDistrictCountyProvinceState" type="text" maxlength="50" class="form-control">
+                </div>
+                <div class="col-xs-12 col-sm-12">
+
+                    <label class="errortext" for="AdressDistrictCountyProvinceState" style="display:none"></label>
+                </div>
+
+                <div class="col-xs-12 col-sm-12">
+
+                </div>
+                <!-- Postal Code/Zip Code -->
+                <div class="col-xs-12 col-sm-12 m5050">
+                    f. Postal Code/Zip Code
+                </div>
+
+                <div class="col-xs-12 col-sm-8">
+                    <div class="form-group m0050">
+                        <label class="sr-only">Postal Code / Zip Code</label>
+                        <input id="AdressPostalCode" name="AdressPostalCode" type="text" maxlength="25" class="form-control">
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12">
+                    <div class="combo checkbox mt0 ml5">
+                        <label>
+                            <span aria-label="No Postal Code/Zip Code"><input id="cbxZipCode" type="checkbox" name="cbxZipCode"></span>
+                            <small class="mt2"> No Postal Code / Zip Code</small>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12">
+
+                    <label class="errortext" for="AdressCountry" style="display:none"></label>
+                </div>
+
+                <div class="col-xs-12 col-sm-12">
+
+                </div>
+                <!-- Country -->
+                <div class="col-xs-12 col-sm-12 m5050">
+                    g. Country
+                </div>
+
+                <div class="col-xs-12 col-sm-8">
+                    <div class="form-group m0050">
+                        <label class="sr-only" for="ContentPlaceHolder1_formApplicant_qMailingAddress_drpMailingCountry" style="display:none">Country</label>
+                        <select id="AdressCountry" name="AdressCountry" class="form-control">
+                            <option value="0">Select A Country...</option>
+                            @if (countries != null)
+                            {
+                                foreach (var item in countries.OrderBy(q => q.Name).ToList())
+                                {
+                                    <option value="@item.ID">@item.Name</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12">
+
+                </div>
+
+                <div class="col-xs-12 col-sm-12">
+
+                </div>
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.card -->
+        <div class="card mb-3">
+            <div class="card-header">
+                9. Country Where You Live Today
+            </div>
+            <div class="card-body">
+
+                <div class="col-xs-12 col-sm-8">
+                    <div class="form-group m0050">
+                        <label class="sr-only" for="CountryLiveToday">Country where you live today.</label>
+                        <select name="CountryLiveToday" id="CountryLiveToday" class="form-control">
+                            <option value="0">Select A Country...</option>
+                            @if (countries != null)
+                            {
+                                foreach (var item in countries.OrderBy(q => q.Name).ToList())
+                                {
+                                    <option value="@item.ID">@item.Name</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12">
+
+                </div>
+
+
+                <div class="col-xs-12 col-sm-12">
+
+                </div>
+
+            </div>
+        </div>
+        <!-- /.card -->
+        <div class="card mb-3">
+            <div class="card-header">
+                10. Phone Number
+            </div>
+            <div class="card-body">
+
+                <div class="col-xs-12 col-sm-8">
+                    <label class="sr-only">Phone Number</label>
+                    <input id="PhoneNumber" name="PhoneNumber" type="text" maxlength="50" class="form-control">
+                </div>
+                <div class="col-xs-12 col-sm-12">
+                    <small>(optional)</small>
+                </div>
+                <div class="col-xs-12 col-sm-12">
+
+                    <label class="errortext" for="PhoneNumber" style="display:none"></label>
+                </div>
+
+                <div class="col-xs-12 col-sm-12">
+
+                </div>
+            </div>
+        </div>
+        <!-- /.card -->
+        <div class="card mb-3">
+            <div class="card-header">
+                11. E-mail Address
+            </div>
+            <div class="card-body">
+
+                <div class="col-xs-12 col-sm-12 m5050">
+                    a. E-Mail Address <small>(e.g. johndoe@example.com)</small>
+                </div>
+                <div class="col-xs-12 col-sm-8">
+                    <label class="sr-only">E-Mail Address</label>
+                    <input id="Email" name="Email" type="text" maxlength="50" class="form-control" oncopy="return false" onpaste="return false" oncut="return false">
+                    <label class="errortext" for="Email" style="display:none"></label>
+                </div>
+                <div class="col-xs-12 col-sm-12 m5050">
+                    b. Confirm E-Mail Address
+                </div>
+                <div class="col-xs-12 col-sm-8">
+                    <label class="sr-only">Confirm E-Mail Address</label>
+                    <input id="ConfirmEmail" name="ConfirmEmail" type="text" maxlength="50" class="form-control" oncopy="return false" onpaste="return false" oncut="return false">
+                    <label class="errortext" for="ConfirmEmail" style="display:none"></label>
+                </div>
+                <div class="col-xs-12 col-sm-12">
+
+                </div>
+
+                <div class="col-xs-12 col-sm-12">
+
+                </div>
+                <div class="col-xs-12 col-sm-12">
+                    <small>
+                        (NOTE: This e-mail address will be used to provide you
+                        with additional information if you are selected.)
+                    </small>
+                </div>
+            </div>
+        </div>
+        <!-- /.card -->
+        <div class="card mb-3">
+            <div class="card-header">
+                12. What is the highest level of education you have achieved, as of today?
+            </div>
+            <div class="card-body">
+                <div class="col-xs-12 col-sm-12">
+                    <div class="table-responsive">
+                        <select id="Education" name="Education" class="form-control">
+                            <option value="0">Select A Education...</option>
+                            @if (educations != null)
+                            {
+                                foreach (var item in educations.OrderBy(q => q.Name).ToList())
+                                {
+                                    <option value="@item.ID">@item.Name</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12">
+
+
+                </div>
+                <div class="col-xs-12 col-sm-12">
+                    <p>
+                        You must have a minimum of a high school diploma reflecting the
+                        completion of a full course of study (vocation schools or equivalency degrees are
+                        not acceptable) or be a skilled worker in an occupation that requires at least two years
+                        of training or experience to qualify (visit
+                        <b><a href="http://www.onetonline.org/" target="_blank">http://www.onetonline.org/</a></b>
+                        to see if your occupation qualifies) for a Diversity Visa.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- /.card -->
+        <div class="card mb-3">
+            <div class="card-header">
+                13. What is your current marital status?
+            </div>
+            <div class="card-body">
+                <div class="col-xs-12 col-sm-12">
+                    <div class="table-responsive">
+                        @*boşanma aşamasındakinden isteğe göre eş bilgisi al*@
+                        @*MaritalStatus*@
+
+                        <select id="MaritalStatus" name="MaritalStatus" class="form-control">
+                            <option value="0">Select A Marital Status...</option>
+                            @if (maritalStatu != null)
+                            {
+                                foreach (var item in maritalStatu.OrderBy(q => q.Name).ToList())
+                                {
+                                    <option value="@item.ID">@item.Name</option>
+                                }
+                            }
+                        </select>
+                        <div id="_ctl0_ContentPlaceHolder1_formApplicant_qMarried_marriedUpdatePanel">
+
+                            <div class="checkbox mt0 ml5">
+                                <label id="ContentPlaceHolder1_formApplicant_qMarried_lblMarried" style="margin-left: 25px">
+                                    <span class="aspNetDisabled" name="cbxMarried" aria-label="Enter Spouse Information"><input id="ContentPlaceHolder1_formApplicant_qMarried_cbxMarried" type="checkbox" name="_ctl0:ContentPlaceHolder1:formApplicant:qMarried:cbxMarried" disabled="disabled"></span>
+                                    <small>Enter Spouse Information</small>
+                                </label>
+                            </div>
+
+                        </div>
+                        <input type="hidden" name="_ctl0:ContentPlaceHolder1:formApplicant:qMarried:hidMarried" id="ContentPlaceHolder1_formApplicant_qMarried_hidMarried">
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12">
+
+
+                </div>
+                <div class="col-xs-12 col-sm-12">
+                    <p>
+                        Legal separation is an arrangement when a couple remain married but live apart,
+                        following a court order. If you and your spouse are legally separated, your spouse
+                        will not be able to immigrate with you through the Diversity Visa program. You will
+                        not be penalized if you choose to enter the name of a spouse from whom you are
+                        legally separated.
+                    </p>
+                    <p>
+                        If you are not legally separated by a court order, you must include your spouse even
+                        if you plan to be divorced before you apply for the Diversity Visa. Failure to list
+                        your eligible spouse is grounds for disqualification.
+                    </p>
+                    <p>
+                        If your spouse is a U.S. citizen or Lawful Permanent Resident, do not list him/her
+                        in your entry.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- /.card -->
+        <div class="card">
+            <div class="card-header">
+                14. Number of Children
+            </div>
+            <div class="card-body">
+
+                <div class="col-xs-6 col-sm-3">
+                    <div class="form-group">
+                        <input id="NumberofChildren" name="NumberofChildren" maxlength="2" class="form-control" type="text">
+                        <input class="btn btn-primary" type="submit" value="Gönder" />
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12">
+
+                    <label class="errortext" for="NumberofChildren" style="display:none"></label>
+                </div>
+
+                <div class="col-xs-12 col-sm-12">
+
+                    <p>
+                        Children include all biological children, legally adopted children, and stepchildren who are unmarried and under the age of 21  on the date you submit your entry.  You must include all eligible children, even if they do not live with you or if they do not intend to apply for a Diversity Visa as your derivative.  Failure to list all eligible children is grounds for disqualification. If your child is a U.S. citizen or Lawful Permanent Resident, do not list him/her in your entry.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- /.card -->
+    </div>
+</form>

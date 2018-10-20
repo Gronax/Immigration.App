@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2046
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Greencard.Library", "Greencard.Library\Greencard.Library.csproj", "{5B199578-C4D6-49A2-BAA6-5445251EF4AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Greencard.Panel", "Greencard.Panel\Greencard.Panel.csproj", "{3FC57E22-D489-458E-BD3A-25B4A4287554}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Greencard.Api", "Greencard.Api\Greencard.Api.csproj", "{F1033327-2705-4E8E-9265-DE1890A2A348}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Greencard.Web", "Greencard.Web\Greencard.Web.csproj", "{686CCE66-8F9D-41D7-A5E6-3A4297330B84}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5B199578-C4D6-49A2-BAA6-5445251EF4AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B199578-C4D6-49A2-BAA6-5445251EF4AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B199578-C4D6-49A2-BAA6-5445251EF4AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B199578-C4D6-49A2-BAA6-5445251EF4AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FC57E22-D489-458E-BD3A-25B4A4287554}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FC57E22-D489-458E-BD3A-25B4A4287554}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FC57E22-D489-458E-BD3A-25B4A4287554}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FC57E22-D489-458E-BD3A-25B4A4287554}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1033327-2705-4E8E-9265-DE1890A2A348}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1033327-2705-4E8E-9265-DE1890A2A348}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1033327-2705-4E8E-9265-DE1890A2A348}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1033327-2705-4E8E-9265-DE1890A2A348}.Release|Any CPU.Build.0 = Release|Any CPU
+		{686CCE66-8F9D-41D7-A5E6-3A4297330B84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{686CCE66-8F9D-41D7-A5E6-3A4297330B84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{686CCE66-8F9D-41D7-A5E6-3A4297330B84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{686CCE66-8F9D-41D7-A5E6-3A4297330B84}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BE3A88A3-F60D-4267-B8AE-8687633D73ED}
+	EndGlobalSection
+EndGlobal
