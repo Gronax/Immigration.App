@@ -41,6 +41,7 @@ namespace Greencard.Web.Controllers
         {
             if (model != null)
             {
+                //ceksi
                 model.CreatedDate = DateTime.Now;
                 db.GreenUserDetails.Add(model);
                 db.SaveChanges();
